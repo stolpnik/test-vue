@@ -1,29 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
+    <LeftNav />
     <v-toolbar
       app
       :clipped-left="clipped"
@@ -47,22 +24,6 @@
     <v-content>
       <HelloWorld msg="Hello World!!!"/>
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon>fa-exchange</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer :fixed="fixed" app>
       <span>&copy; 2017</span>
     </v-footer>
@@ -71,24 +32,21 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import LeftNav from './components/organisms/LeftNav.vue';
 import HelloWorld from './components/HelloWorld.vue';
 
 @Component({
   components: {
     HelloWorld,
+    LeftNav
   }
 })
 export default class App extends Vue {
-  public clipped: boolean = false
-  public drawer: boolean = true
-  public fixed: boolean = false
-  public items: {} = [{
-    icon: 'fa-bullseye',
-    title: 'Inspire'
-  }]
-  public miniVariant: boolean = false
-  public right: boolean = true
-  public rightDrawer: boolean = false
-  public title: string = 'Vuetify.js'
+  clipped: boolean = false
+  drawer: boolean = true
+  miniVariant: boolean = false
+  right: boolean = true
+  rightDrawer: boolean = false
+  title: string = 'Vuetify.js'
 }
 </script>
