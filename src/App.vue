@@ -48,5 +48,9 @@ export default class App extends Vue {
   right: boolean = true
   rightDrawer: boolean = false
   title: string = 'Vuetify.js'
+  constructor() {
+    super();
+    console.log(process.env);
+  }
 }
 </script>
